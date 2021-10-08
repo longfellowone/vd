@@ -77,21 +77,7 @@ fn modify_resistance_temperature(resistance: f64, to_temperature: i32) -> f64 {
     const FROM_TEMPERATURE: f64 = 75.0; // Table 9 resistance values based of 75 degrees
     const A: f64 = 0.00323; // Temperature coefficient of copper @ 75 degrees. Aluminum 0.00330
 
-    // #12 is 1.588 ohms/1000 ft at 20 C.
-    // 0.00393 come from?
-
     resistance * (1.0 + A * (to_temperature as f64 - FROM_TEMPERATURE))
-}
-
-fn modify_resistance_temperature2(resistance: f64, to_temperature: i32) -> f64 {
-    const FROM_TEMPERATURE: f64 = 20.0; // Table 9 resistance values based of 75 degrees
-    const A: f64 = 0.00393; // Temperature coefficient of copper @ 75 degrees. Aluminum 0.00330
-
-    let result = resistance * (1.0 + A * (to_temperature as f64 - FROM_TEMPERATURE));
-
-    println!("{:?}", result);
-
-    result
 }
 
 #[cfg(test)]
@@ -113,14 +99,6 @@ mod tests {
 
     #[test]
     fn test_modify_resistance_temperature() {
-        assert_eq!(modify_resistance_temperature(1.2, 20), 0.98682)
-    }
-
-    #[test]
-    fn test_modify_resistance_temperature2() {
-        // #12
-        // http://www.tubebooks.org/books/ftr_ref_data.pdf
-        let _ = modify_resistance_temperature2(1.588, 75);
-        // assert_eq!(modify_resistance_temperature2(1.588, 75), 0.98682)
+        assert_eq!(modify_resistance_temperature(2.0, 20), 1.6447)
     }
 }
