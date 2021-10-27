@@ -3,7 +3,7 @@ name = "vd"
 version = "0.1.0"
 authors = ["Matt Wright <mattwright3195@gmail.com>"]
 edition = "2018"
-description = "A short description of my package"
+description = "Voltage drop calculator"
 license = "MIT"
 
 
